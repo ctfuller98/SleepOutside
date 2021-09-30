@@ -14,8 +14,7 @@ export default class ProductDetails {
                  .addEventListener('click', this.addToCart.bind(this));
       }
         // add to cart button event handler
-      addToCart(e) {
-        const product = products.find((item) => item.Id === e.target.dataset.id);
+      addToCart() {        
         setLocalStorage('so-cart', product);
       }
   
