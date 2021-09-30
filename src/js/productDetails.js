@@ -1,3 +1,5 @@
+import ProductData from './productData.js';
+
 import { setLocalStorage } from './utils.js';
 
 export default class ProductDetails {
@@ -10,26 +12,29 @@ export default class ProductDetails {
       async init(){
         this.product = await this.dataSource.findProductById(this.productId);
         document.querySelector('main').innerHTML = this.renderProductDetails();
-            document.getElementById('addToCart')
+        document.getElementById('addToCart')
                  .addEventListener('click', this.addToCart.bind(this));
       }
         // add to cart button event handler
       addToCart() {        
-        setLocalStorage('so-cart', product);
+        setLocalStorage('so-cart', this.product);
       }
   
       renderProductDetails() {
-        const newItem = `<h3>${item.Brand.Name}</h3> 
-        <h2 class="divider">${item.NameWithoutBrand}</h2> <!-- Custom-->
+        const newItem = `<section class="product-detail"> <h3>${this.product.Brand.Name}</h3> 
+        <h2 class="divider">${this.product.NameWithoutBrand}</h2> <!-- Custom-->
         <img
           class="divider"
-          src="${item.Image}"
-          alt="${item.NameWithoutBrand}"
+          src="${this.product.Image}"
+          alt="${this.product.NameWithoutBrand}"
         /> <!-- Custom-->
 
-        <p class="product-card__price">${item.ListPrice}</p> <!-- Custom-->
-        <p class="product__color">${item.Colors[1]}</p> <!-- Custom-->
-        <p class="product__description">${item.DescriptionHtmlSimple}</p> <!-- Custom-->`;
+        <p class="product-card__price">${this.product.ListPrice}</p> <!-- Custom-->
+        <p class="product__color">${this.product.Colors[0].ColorName}</p> <!-- Custom-->
+        <p class="product__description">${this.product.DescriptionHtmlSimple}</p> <!-- Custom-->
+        <div class="product-detail__add">
+        <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
+        </div></section>`;
             console.log(newItem);
             return newItem;
           }
