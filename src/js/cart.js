@@ -7,15 +7,13 @@ function getCartContents() {
   const cartItems = getLocalStorage('so-cart');
   if(cartItems){
     const htmlItems = cartItems.map((item) => renderCartItem(item));
-    document.querySelector('.product-list').innerHTML = htmlItems.join('');
+    document.querySelector('.product-list').innerHTML = htmlItems.join(''); 
+    document.querySelector('.subtotal').innerHTML = "Subtotal: " + getCartTotals(cartItems)
   }
   
   
-  // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
-  const htmlItems = cartItems.map((item) => renderCartItem(item));
-  document.querySelector('.product-list').innerHTML = htmlItems.join('');
-  document.querySelector('.subtotal').innerHTML = "Subtotal: " + getCartTotals(cartItems)
 // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
+
 }
 function getCartTotals(array) {
   let subtotal = 0;
