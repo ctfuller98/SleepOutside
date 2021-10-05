@@ -12,6 +12,17 @@ function getCartContents() {
   
   
   // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
+  const htmlItems = cartItems.map((item) => renderCartItem(item));
+  document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  document.querySelector('.subtotal').innerHTML = "Subtotal: " + getCartTotals(cartItems)
+// document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
+}
+function getCartTotals(array) {
+  let subtotal = 0;
+  for (var i = 0; i < array.length; i++) {
+    subtotal +=array[i].FinalPrice
+  }
+  return subtotal
 }
 
 function renderCartItem(item) {
@@ -29,7 +40,6 @@ function renderCartItem(item) {
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
-  console.log(newItem);
   return newItem;
 }
 
