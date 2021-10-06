@@ -3,24 +3,23 @@ function getLocalStorage(key) {
 }
 
 function getCartContents() {
-  let markup = '';
-  const cartItems = getLocalStorage('so-cart');
-  if(cartItems){
+  let markup = "";
+  const cartItems = getLocalStorage("so-cart");
+  if (cartItems) {
     const htmlItems = cartItems.map((item) => renderCartItem(item));
-    document.querySelector('.product-list').innerHTML = htmlItems.join(''); 
-    document.querySelector('.subtotal').innerHTML = "Subtotal: " + getCartTotals(cartItems)
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    document.querySelector(".subtotal").innerHTML =
+      "Subtotal: " + getCartTotals(cartItems);
   }
-  
-  
-// document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
 
+  // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
 }
 function getCartTotals(array) {
   let subtotal = 0;
   for (var i = 0; i < array.length; i++) {
-    subtotal +=array[i].FinalPrice
+    subtotal += array[i].FinalPrice;
   }
-  return subtotal
+  return subtotal;
 }
 
 function renderCartItem(item) {
