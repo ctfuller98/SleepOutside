@@ -34,3 +34,10 @@ export function getParam(param){
   console.log(product);
   return product;
 } 
+export function renderListWithTemplate(template,parent,list,callback){
+  list.forEach(element => {
+    const clone = template.content.cloneNode(true)
+    const templateWithData = callback(clone, element)
+    parent.appendChild(templateWithData)    
+  })
+};
