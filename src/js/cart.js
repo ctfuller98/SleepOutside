@@ -1,6 +1,4 @@
-function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
+import { getLocalStorage , loadHeaderFooter } from "./utils.js";
 
 function getCartContents() {
   let markup = "";
@@ -11,8 +9,6 @@ function getCartContents() {
     document.querySelector(".subtotal").innerHTML =
       "Subtotal: " + getCartTotals(cartItems);
   }
-
-  // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
 }
 function getCartTotals(array) {
   let subtotal = 0;
@@ -39,5 +35,7 @@ function renderCartItem(item) {
 </li>`;
   return newItem;
 }
-
 getCartContents();
+loadHeaderFooter();
+
+
