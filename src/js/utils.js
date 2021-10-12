@@ -66,13 +66,11 @@ export async function loadHeaderFooter(){
   let footerE = qs('.footer')
   renderWithTemplate(header, headerE)
   renderWithTemplate(footer, footerE)
+  getSuperscript()
 
 }
- /*function getSuperscript(){
+function getSuperscript(){
     const cartItems = getLocalStorage("so-cart");
     const iconSuper = cartItems.length;
-    document.querySelector(".cartSuper").innerHTML = iconSuper;
-
-  
+    qs(".cartSuper").innerHTML = iconSuper;
   }
-  */
