@@ -10,7 +10,8 @@ export default class ProductDetails {
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
-    document.getElementById("addToCart")
+    document
+      .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
   }
   // add to cart button event handler

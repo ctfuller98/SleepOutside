@@ -110,8 +110,8 @@ button {
   fill: gray;
 }
 .cartSuper {
-  font-size: .75em;
-  width:75%;
+  font-size: 0.75em;
+  width: 75%;
   border-radius: 50%;
   background-color: orange;
   position: absolute;
