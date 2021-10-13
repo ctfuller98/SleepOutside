@@ -7,6 +7,7 @@
   --tertiary-color: #a4b8c4;
   --light-grey: #d0d0d0;
   --dark-grey: #303030;
+  --dark-red: #810303;
 
   /* sizes */
   --font-base: 18px;
@@ -230,4 +231,14 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+/* Added css for remove from cart button*/
+#removeFromCart {
+  font-size: medium;
+  background-color: var(--dark-red);
+  display: inline;
+  margin: none;
+  padding: 0.2em 0.2em;
+  border: none;
+  color: white;
 }
