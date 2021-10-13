@@ -1,6 +1,7 @@
 import { getLocalStorage , loadHeaderFooter } from "./utils.js";
+import CartList from "./cartList.js";
 
-function getCartContents() {
+/*function getCartContents() {
   let markup = "";
   const cartItems = getLocalStorage("so-cart");
   if (cartItems) {
@@ -18,7 +19,7 @@ function getCartTotals(array) {
   return subtotal;
 }
 
-function renderCartItem(item) {
+/*function renderCartItem(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -34,8 +35,11 @@ function renderCartItem(item) {
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
   return newItem;
-}
-getCartContents();
+}*/
+
 loadHeaderFooter();
+const cart = new CartList("so-cart", document.querySelector(".product-list"))
+cart.init()
+
 
 

@@ -7,7 +7,6 @@ export default class CartList {
   }
 
   async init() {
-    
     const list = getLocalStorage(this.key);
     this.renderList(list);
   }
