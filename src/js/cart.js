@@ -35,9 +35,28 @@ function renderCartItem(item) {
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p class="cart-card__price">$${item.FinalPrice}
+  <span id="removeFromCart" onclick="removeFromCart('${item.Id}')" >Remove</span></p>
+  
 </li>`;
   return newItem;
+}
+
+function removeFromCart(itemId){
+  let cartItems = getLocalStorage("so-cart");
+  let index = 0;
+  //write a loop to search through the cartItems[], 
+  //return the item with the index pointing at the item with the itemId
+  for (let i = 0; i < cartItems.length; i++) {
+    if(cartItems[i].Id == itemId)
+      {
+        index = i;
+      }
+  }
+  cartItems.splice(index,1);
+  localStorage.setItem("so-cart", JSON.stringify(cartItems));
+  getCartContents();
+
 }
 
 getCartContents();
