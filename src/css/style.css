@@ -109,6 +109,15 @@ button {
 .cart:hover svg {
   fill: gray;
 }
+.cartSuper {
+  font-size: .75em;
+  width:75%;
+  border-radius: 50%;
+  background-color: orange;
+  position: absolute;
+  top: 15px;
+  right: 0;
+}
 
 /* End cart icon styles */
 

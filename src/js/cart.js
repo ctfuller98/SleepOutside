@@ -1,8 +1,7 @@
-function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
-}
+import { getLocalStorage , loadHeaderFooter } from "./utils.js";
+import CartList from "./cartList.js";
 
-function getCartContents() {
+/*function getCartContents() {
   let markup = "";
   const cartItems = getLocalStorage("so-cart");
   if (cartItems) {
@@ -11,8 +10,6 @@ function getCartContents() {
     document.querySelector(".subtotal").innerHTML =
       "Subtotal: " + getCartTotals(cartItems);
   }
-
-  // document.querySelector(".product-list").innerHTML = renderCartItem(cartItems);
 }
 function getCartTotals(array) {
   let subtotal = 0;
@@ -22,7 +19,7 @@ function getCartTotals(array) {
   return subtotal;
 }
 
-function renderCartItem(item) {
+/*function renderCartItem(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -40,7 +37,14 @@ function renderCartItem(item) {
   
 </li>`;
   return newItem;
-}
+}*/
+
+loadHeaderFooter();
+const cart = new CartList("so-cart", document.querySelector(".product-list"))
+cart.init()
+
+
+
 
 function removeFromCart(itemId){
   let cartItems = getLocalStorage("so-cart");
@@ -60,3 +64,4 @@ function removeFromCart(itemId){
 }
 
 getCartContents();
+
