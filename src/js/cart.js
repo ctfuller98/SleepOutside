@@ -59,9 +59,7 @@ function removeFromCart(itemId){
   }
   cartItems.splice(index,1);
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
-  getCartContents();
+  cart.init();
 
 }
-
-getCartContents();
 
