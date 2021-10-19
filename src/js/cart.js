@@ -24,9 +24,10 @@ loadHeaderFooter();
 const cart = new CartList("so-cart", document.querySelector(".product-list"));
 cart.init();
 
-function removeFromCart(itemId) {
+/*function removeFromCart() {
   let cartItems = getLocalStorage("so-cart");
   let index = 0;
+  let itemId = "880RR"
   //write a loop to search through the cartItems[],
   //return the item with the index pointing at the item with the itemId
   for (let i = 0; i < cartItems.length; i++) {
@@ -38,4 +39,4 @@ function removeFromCart(itemId) {
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
   cart.init();
 
-}
+}*/

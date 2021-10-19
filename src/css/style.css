@@ -242,3 +242,7 @@ footer {
   border: none;
   color: white;
 }
+
+.center{
+  text-align: center;
+}
