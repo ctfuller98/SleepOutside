@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.js";
+import { qs, renderListWithTemplate } from "./utils.js";
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -10,28 +10,23 @@ export default class ProductList {
   }
   async init() {
     // our dataSource will return a Promise...so we can use await to resolve it.
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     // render the list
     this.renderList(list);
+    let catstring = `${this.category}`;
+    catstring.toUpperCase();
+    qs(".product-title").innerHTML = "Top Products: " + catstring; 
   }
   renderList(list) {
     // make sure the list is empty
     this.listElement.innerHTML = "";
     //get the template
     const template = document.getElementById("product-card-template");
-    const PricedList = list.filter(
-      (item) => item.FinalPrice < 200 && item.FinalPrice > 177
-    );
-    renderListWithTemplate(
-      template,
-      this.listElement,
-      PricedList,
-      this.prepareTemplate
-    );
+    renderListWithTemplate( template, this.listElement, list,this.prepareTemplate );
   }
   prepareTemplate(template, product) {
     template.querySelector("a").href += product.Id;
-    template.querySelector("img").src = product.Image;
+    template.querySelector("img").src = product.Images.PrimaryMedium;
     template.querySelector("img").alt += product.NameWithoutBrand;
     template.querySelector(".card_brand").textContent = product.Brand.Name;
     template.querySelector(".card_name").textContent = product.NameWithoutBrand;
