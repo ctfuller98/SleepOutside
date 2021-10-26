@@ -13,9 +13,8 @@ export default class ProductList {
     const list = await this.dataSource.getData(this.category);
     // render the list
     this.renderList(list);
-    let catstring = `${this.category}`;
-    catstring.toUpperCase();
-    qs(".product-title").innerHTML = "Top Products: " + catstring; 
+    var titlestring = this.category.charAt(0).toUpperCase() + this.category.slice(1);
+    qs(".product-title").innerHTML = "Top Products: " + titlestring; 
   }
   renderList(list) {
     // make sure the list is empty
