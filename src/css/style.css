@@ -108,6 +108,8 @@ button {
 }
 .cart:hover svg {
   fill: gray;
+  transform: scale(1.25);
+   transition-duration: 1.5s;
 }
 .cartSuper {
   font-size: 0.75em;

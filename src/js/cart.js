@@ -1,28 +1,21 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.js";
+import { getLocalStorage, loadHeaderFooter, getGartTotals } from "./utils.js";
 import CartList from "./cartList.js";
 
-/*function getCartContents() {
+function getCartContents() {
   let markup = "";
   const cartItems = getLocalStorage("so-cart");
   if (cartItems) {
-    const htmlItems = cartItems.map((item) => renderCartItem(item));
-    document.querySelector(".product-list").innerHTML = htmlItems.join("");
     document.querySelector(".subtotal").innerHTML =
       "Subtotal: " + getCartTotals(cartItems);
   }
 }
-function getCartTotals(array) {
-  let subtotal = 0;
-  for (var i = 0; i < array.length; i++) {
-    subtotal += array[i].FinalPrice;
-  }
-  return subtotal;
-}
-*/
+
+
 
 loadHeaderFooter();
 const cart = new CartList("so-cart", document.querySelector(".product-list"));
 cart.init();
+getCartContents();
 
 /*function removeFromCart() {
   let cartItems = getLocalStorage("so-cart");
