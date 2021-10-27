@@ -19,8 +19,28 @@ export function setLocalStorage(key, data) {
   let currentCart = getLocalStorage(key);
   if (!currentCart) {
     currentCart = [];
+    currentCart.push(data);
+    //console.log("inside first")
   }
-  currentCart.push(data);
+  else
+  { 
+  let isMatching = false;
+  currentCart.forEach(item => {
+    if(item.Id == data.Id)
+    {
+      isMatching = true;
+    }
+  })
+  if(isMatching)
+  {
+   let currentItem = currentCart.find(item => item.Id == data.Id);
+   currentItem.Quatity = currentItem.Quatity + 1;
+  }
+  else{
+    currentCart.push(data);
+  }
+  //console.log(currentCart)
+  }
   localStorage.setItem(key, JSON.stringify(currentCart));
 }
 // set a listener for both touchend and click
