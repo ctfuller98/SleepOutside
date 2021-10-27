@@ -8,7 +8,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {
  
   }
@@ -17,6 +17,16 @@ export default class ProductData {
   getData(category) {
     return fetch(baseURL + `products/search/${category}`)
     .then(convertToJson).then((data) => data.Result);
+  }
+  async checkout(order){
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(order)
+    };
+    return await fetch(baseURL + 'checkout/', options).then(convertToJson);
   }
 
   async findProductById(id) {
