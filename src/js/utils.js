@@ -19,8 +19,28 @@ export function setLocalStorage(key, data) {
   let currentCart = getLocalStorage(key);
   if (!currentCart) {
     currentCart = [];
+    currentCart.push(data);
+    //console.log("inside first")
   }
-  currentCart.push(data);
+  else
+  { 
+  let isMatching = false;
+  currentCart.forEach(item => {
+    if(item.Id == data.Id)
+    {
+      isMatching = true;
+    }
+  })
+  if(isMatching)
+  {
+   let currentItem = currentCart.find(item => item.Id == data.Id);
+   currentItem.Quatity = currentItem.Quatity + 1;
+  }
+  else{
+    currentCart.push(data);
+  }
+  //console.log(currentCart)
+  }
   localStorage.setItem(key, JSON.stringify(currentCart));
 }
 // set a listener for both touchend and click
@@ -65,10 +85,25 @@ export async function loadHeaderFooter() {
   let footerE = qs(".footer");
   renderWithTemplate(header, headerE);
   renderWithTemplate(footer, footerE);
-  getSuperscript();
+  //document.getElementById("addToCart").addEventListener("click", getSuperscript());
 }
-function getSuperscript() {
+/*function getSuperscript() {
   const cartItems = getLocalStorage("so-cart");
   const iconSuper = cartItems.length;
-  qs(".cartSuper").innerHTML = iconSuper;
+  var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        qs(".cartSuper").innerHTML = iconSuper;
+      }
+    }
+    xhttp.open("GET", iconSuper, true);
+    xhttp.send();
+  };
+*/
+export function getCartTotals(array) {
+  let subtotal = 0;
+  for (var i = 0; i < array.length; i++) {
+    subtotal += array[i].FinalPrice;
+  }
+  return subtotal;
 }
