@@ -1,12 +1,9 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.js";
 import CartList from "./cartList.js";
 
-/*function getCartContents() {
-  let markup = "";
+function getCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (cartItems) {
-    const htmlItems = cartItems.map((item) => renderCartItem(item));
-    document.querySelector(".product-list").innerHTML = htmlItems.join("");
     document.querySelector(".subtotal").innerHTML =
       "Subtotal: " + getCartTotals(cartItems);
   }
@@ -18,12 +15,12 @@ function getCartTotals(array) {
   }
   return subtotal;
 }
-*/
+
 
 loadHeaderFooter();
 const cart = new CartList("so-cart", document.querySelector(".product-list"));
 cart.init();
-
+getCartContents();
 /*function removeFromCart() {
   let cartItems = getLocalStorage("so-cart");
   let index = 0;
