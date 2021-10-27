@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter, getGartTotals } from "./utils.js";
+import { getLocalStorage, loadHeaderFooter, getCartTotals } from "./utils.js";
 import CartList from "./cartList.js";
 
 function getCartContents() {
@@ -9,8 +9,6 @@ function getCartContents() {
       "Subtotal: " + getCartTotals(cartItems);
   }
 }
-
-
 
 loadHeaderFooter();
 const cart = new CartList("so-cart", document.querySelector(".product-list"));
