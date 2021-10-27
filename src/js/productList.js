@@ -21,7 +21,12 @@ export default class ProductList {
     this.listElement.innerHTML = "";
     //get the template
     const template = document.getElementById("product-card-template");
-    renderListWithTemplate( template, this.listElement, list,this.prepareTemplate );
+    renderListWithTemplate(
+      template,
+      this.listElement,
+      list,
+      this.prepareTemplate
+    );
   }
   prepareTemplate(template, product) {
     template.querySelector("a").href += product.Id;

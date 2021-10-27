@@ -1,13 +1,15 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.js";
+import { getLocalStorage, loadHeaderFooter, getCartTotals } from "./utils.js";
 import CartList from "./cartList.js";
 
 function getCartContents() {
+  let markup = "";
   const cartItems = getLocalStorage("so-cart");
   if (cartItems) {
     document.querySelector(".subtotal").innerHTML =
       "Subtotal: " + getCartTotals(cartItems);
   }
 }
+
 function getCartTotals(array) {
   let subtotal = 0;
   for (var i = 0; i < array.length; i++) {
@@ -15,12 +17,11 @@ function getCartTotals(array) {
   }
   return subtotal;
 }
-
-
 loadHeaderFooter();
 const cart = new CartList("so-cart", document.querySelector(".product-list"));
 cart.init();
 getCartContents();
+
 /*function removeFromCart() {
   let cartItems = getLocalStorage("so-cart");
   let index = 0;
