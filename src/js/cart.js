@@ -9,14 +9,6 @@ function getCartContents() {
       "Subtotal: " + getCartTotals(cartItems);
   }
 }
-
-function getCartTotals(array) {
-  let subtotal = 0;
-  for (var i = 0; i < array.length; i++) {
-    subtotal += array[i].FinalPrice;
-  }
-  return subtotal;
-}
 loadHeaderFooter();
 const cart = new CartList("so-cart", document.querySelector(".product-list"));
 cart.init();

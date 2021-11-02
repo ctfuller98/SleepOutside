@@ -34,7 +34,7 @@ export function setLocalStorage(key, data) {
   if(isMatching)
   {
    let currentItem = currentCart.find(item => item.Id == data.Id);
-   currentItem.Quatity = currentItem.Quatity + 1;
+   currentItem.Quantity = currentItem.Quantity + 1;
   }
   else{
     currentCart.push(data);
@@ -103,7 +103,7 @@ export async function loadHeaderFooter() {
 export function getCartTotals(array) {
   let subtotal = 0;
   for (var i = 0; i < array.length; i++) {
-    subtotal += array[i].FinalPrice;
+    subtotal += array[i].FinalPrice*array[i].Quantity;
   }
   return subtotal;
 }

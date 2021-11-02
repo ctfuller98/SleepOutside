@@ -6,15 +6,19 @@ import {
 } from "./utils.js";
 import ExternalServices from "./externalServices.js";
 let cartItems = getLocalStorage("so-cart");
+let totalQuantity = 0 
+cartItems.array.forEach(element => ({
+  totalQuantity = totalQuantity + element.quantity
+}));
 let subtotal = getCartTotals(cartItems);
 let tax = 0.06 * subtotal;
-let shipping = 10 + (cartItems.length - 1) * 2;
+let shipping = 10 + (totalQuantity - 1) * 2;
 let total = subtotal + tax + shipping;
 const services = new ExternalServices();
 function print_checkout() {
   qs(
     ".checkoutsub"
-  ).innerHTML = `Item Subtotal(${cartItems.length}):   $${subtotal}`;
+  ).innerHTML = `Item Subtotal(${totalQuantity}):   $${subtotal}`;
   qs(".tax").innerHTML = `Tax: $${tax.toFixed(2)}`;
   qs(".shipping").innerHTML = `Shipping Estimate: $${shipping}`;
   qs(".orderTotal").innerHTML = `<b>Order Total</b>: ${total.toFixed(2)} `;

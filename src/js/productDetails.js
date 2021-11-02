@@ -16,7 +16,7 @@ export default class ProductDetails {
   }
   // add to cart button event handler
   addToCart() {
-    this.product.Quatity = 1;
+    this.product.Quantity = 1;
     setLocalStorage("so-cart", this.product);
   }
 
