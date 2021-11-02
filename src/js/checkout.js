@@ -6,10 +6,10 @@ import {
 } from "./utils.js";
 import ExternalServices from "./externalServices.js";
 let cartItems = getLocalStorage("so-cart");
-let totalQuantity = 0 
-cartItems.array.forEach(element => ({
-  totalQuantity = totalQuantity + element.quantity
-}));
+let totalQuantity = 0; 
+for (let i = 0; i < cartItems.length; i++) {
+  totalQuantity = totalQuantity + cartItems[i].Quantity;
+}
 let subtotal = getCartTotals(cartItems);
 let tax = 0.06 * subtotal;
 let shipping = 10 + (totalQuantity - 1) * 2;
