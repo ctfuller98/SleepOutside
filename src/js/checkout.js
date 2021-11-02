@@ -38,13 +38,15 @@ async function handleSubmit(e) {
     Price: item.FinalPrice,
   }));
   data.cart = newCart;
-  data.date = new Date();
+  data.orderDate = new Date();
+  data.expiration = `${data.expireMM}/${data.expireYY}`;
   try {
     const res = await services.checkout(data);
     console.log(res);
   } catch (err) {
     console.log(err);
   }
+
 }
 function formDataToJSON(formElement) {
   let formData = new FormData(formElement);
