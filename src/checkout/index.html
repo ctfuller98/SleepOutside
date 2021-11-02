@@ -91,16 +91,16 @@
           </p>
           <p>
             <label for="zip">Zipcode</label>
-            <input type="text" pattern="[0-9]{5}" required />
+            <input name = 'zip' type="text" pattern="[0-9]{5}" required />
           </p>
         </fieldset>
         <fieldset>
           <legend>Payment</legend>
           <p>
-            <label for="cnumber">Card Number</label>
-            <input name="cnumber" type="text" pattern="[0-9]{16}" required />
+            <label for="cardNumber">Card Number</label>
+            <input name="cardNumber" type="text" pattern="[0-9]{16}" required />
           </p>
-          <label for="expire">Expiration</label>
+          <label for="expiration">Expiration</label>
           <select name="expireMM" id="expireMM">
             <option value="">Month</option>
             <option value="01">January</option>
