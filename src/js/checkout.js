@@ -3,6 +3,7 @@ import {
   getLocalStorage,
   qs,
   loadHeaderFooter,
+  alertMessage,
 } from "./utils.js";
 import ExternalServices from "./externalServices.js";
 let cartItems = getLocalStorage("so-cart");
@@ -42,9 +43,12 @@ async function handleSubmit(e) {
   data.expiration = `${data.expireMM}/${data.expireYY}`;
   try {
     const res = await services.checkout(data);
+    window.location.replace("../checkout/checkedOut.html");
+    localStorage.clear();
     console.log(res);
   } catch (err) {
-    console.log(err);
+    await console.log(err.message)
+    //display the error to the user
   }
 
 }
