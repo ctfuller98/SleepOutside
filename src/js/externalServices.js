@@ -37,4 +37,30 @@ export default class ExternalServices {
     console.log(baseURL + `product/${id}`);
     return products;
   }
-}
+  async loginRequest(creds){
+    console.log(creds)
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(creds)
+    }
+    const response = await fetch(baseURL + 'login', options).then(convertToJson);
+    console.log(response)
+    return response.accessToken;
+    };
+    async orderRequest(token) {
+      const options = {
+        method: "GET",
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": "application/json"
+        }
+      }
+      const response = await fetch(baseURL + 'orders', options).then(convertToJson);
+      return response;
+    }
+
+  }
+
