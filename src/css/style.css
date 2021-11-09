@@ -144,6 +144,9 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+.color-radio {
+  display:flex;
+}
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;

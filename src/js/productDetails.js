@@ -29,12 +29,20 @@ export default class ProductDetails {
           alt="${this.product.NameWithoutBrand}"
         /> <!-- Custom-->
 
-        <p class="product-card__price">${this.product.ListPrice}</p> <!-- Custom-->
-        <p class="product__color">${this.product.Colors[0].ColorName}</p> <!-- Custom-->
+        <p class="product-card__price">$${this.product.ListPrice}</p> <!-- Custom-->
+        <section class="product__color">${this.renderColors(this.product.Colors)}</section> <!-- Custom-->
         <p class="product__description">${this.product.DescriptionHtmlSimple}</p> <!-- Custom-->
         <div class="product-detail__add">
         <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
         </div></section>`;
     return newItem;
+  }
+  renderColors(colors){
+    return colors.map((color)=> `
+    <div class ="color-radio">
+      <img src="${color.ColorChipImageSrc}" alt="${color.ColorName}">
+        <label for ="color">${color.ColorName}</label>
+          <input name="color" type="radio" value="${color.colorCode}">
+          </div>`).join('');
   }
 }
