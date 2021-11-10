@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "stylesheet" href="../css/style.css">
-    <script src = "../js/main.js" type="module" defer></script>
-    <script src = "../js/admin.js" type = "module" defer></script>
-    <title>Sleep Outside | Admin</title>
-</head>
-<body>
-    <header class="divider header">
-    
-    </header>
-    <main>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sleep Outside | Home</title>
+    <link rel="stylesheet" href="../css/style.css" />
 
-    </main>
-    <footer class ="footer"></footer> 
-</body>
+    <script type="module">
+      // Normally we have been creating a separate js file to hold this. I put it here to show that you can...the next question is should you?
+      // Advantages to putting it here: one less file to request and download.
+      // Disadvantages: it breaks the pattern we have established with our other pages, and the separation of concerns...
+      import { loadHeaderFooter } from "../js/utils.js";
+      import Admin from "../js/Admin.js";
+
+      loadHeaderFooter();
+      const myAdmin = new Admin("main");
+      myAdmin.showLogin();
+    </script>
+  </head>
+  <body>
+    <header class="divider header"></header>
+    <main class="divider"></main>
+    <footer class="footer"></footer>
+  </body>
 </html>

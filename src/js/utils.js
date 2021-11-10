@@ -109,22 +109,16 @@ export function getCartTotals(array) {
 }
 
 
-export function alertMessage(message, scroll = true) {
-  // create element to hold our alert
+export function alertMessage(message, scroll = true, duration = 3000) {
   const alert = document.createElement('div');
-  // add a class to style the alert
   alert.classList.add('alert');
-  console.log("I am being Called");
-  // set the contents. You should have a message and an X or something the user can click on to remove
- // alert.innerHTML = message.promisefulfilled;
-  // add a listener to the alert to see if they clicked on the X
-  // if they did then remove the child
+  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+  
   alert.addEventListener('click', function(e) {
-     // if( ) { // how can we tell if they clicked on our X or on something else?  hint: check out e.target.tagName or e.target.innerText
+      if(e.target.tagName == 'SPAN') {
         main.removeChild(this);
-     // }
+      }
   })
-  // add the alert to the top of main
   const main = document.querySelector('main');
   main.prepend(alert);
   // make sure they see the alert by scrolling to the top of the window
@@ -132,4 +126,13 @@ export function alertMessage(message, scroll = true) {
   if(scroll)
     window.scrollTo(0,0);
 
+  // left this here to show how you could remove the alert automatically after a certain amount of time.
+  // setTimeout(function () {
+  //   main.removeChild(alert);
+  // }, duration);
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll('.alert');
+  alerts.forEach(alert => document.querySelector('main').removeChild(alert));
 }
